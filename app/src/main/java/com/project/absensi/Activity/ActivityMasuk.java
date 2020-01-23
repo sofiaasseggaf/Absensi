@@ -59,6 +59,7 @@ public class ActivityMasuk extends AppCompatActivity {
 
     ModelLogin dataModelUser;
     Double lat, lon;
+    Uri photoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +109,16 @@ public class ActivityMasuk extends AppCompatActivity {
         btnKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendDataAbsen(foto);
+                if (txtKeterangan.getText().toString().length()== 0) {
+                    txtKeterangan.setError("keterangan belum di isi !");
+                }
+                if(imageView.getDrawable()==null) {
+                    Toast.makeText(ActivityMasuk.this, "foto blm di input", Toast.LENGTH_SHORT).show();
+                }
+                if(txtKeterangan.getText().toString().length() != 0 && imageView.getDrawable() != null){
+                    sendDataAbsen(foto);
+                    onBackPressed();
+                }
             }
         });
 
@@ -122,7 +132,7 @@ public class ActivityMasuk extends AppCompatActivity {
             photoFile= createPhotoFile();
             if (photoFile!=null){
                 pathToFile= photoFile.getAbsolutePath();
-                Uri photoUri = FileProvider.getUriForFile(ActivityMasuk.this, "com.project.absensi.fileprovider", photoFile);
+                photoUri = FileProvider.getUriForFile(ActivityMasuk.this, "com.project.absensi.fileprovider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(takePictureIntent, 1);
             }
@@ -175,10 +185,10 @@ public class ActivityMasuk extends AppCompatActivity {
                 toRequestBody(AppUtil.replaceNull(now)),
                 toRequestBody(AppUtil.replaceNull("Masuk")),
                 toRequestBody(AppUtil.replaceNull(lat+","+lon)),
-                toRequestBody(AppUtil.replaceNull(" ")),
-                toRequestBody(AppUtil.replaceNull(" ")),
-                toRequestBody(AppUtil.replaceNull(" ")),
-                toRequestBody(AppUtil.replaceNull(" ")),
+                toRequestBody(AppUtil.replaceNull(" - ")),
+                toRequestBody(AppUtil.replaceNull(" - ")),
+                toRequestBody(AppUtil.replaceNull(" - ")),
+                toRequestBody(AppUtil.replaceNull("0000-00-00 00:00:00")),
                 toRequestBody(AppUtil.replaceNull(now)),
                 toRequestBody(AppUtil.replaceNull(txtKeterangan.getText().toString()))
         );
@@ -217,7 +227,7 @@ public class ActivityMasuk extends AppCompatActivity {
                 , System.currentTimeMillis() + "");
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 60, bos);
         byte[] bitmapdata = bos.toByteArray();
         //write the bytes in file
 

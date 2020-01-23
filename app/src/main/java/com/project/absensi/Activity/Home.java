@@ -1,23 +1,28 @@
 package com.project.absensi.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.project.absensi.R;
+import com.project.absensi.login.LoginTemplate;
 import com.project.absensi.model.Login.ModelLogin;
 import com.robin.locationgetter.EasyLocation;
 
 public class Home extends AppCompatActivity {
 
     ImageButton btnMasuk, btnKeluar, btnSakit, btnIzin, btnOff;
+    Button btnLogout;
     ModelLogin dataModelUser;
 
     @Override
@@ -32,6 +37,7 @@ public class Home extends AppCompatActivity {
         btnSakit = findViewById(R.id.btnSakit);
         btnIzin = findViewById(R.id.btnIzin);
         btnOff = findViewById(R.id.btnOff);
+        btnLogout = findViewById(R.id.btnLogout);
 
         btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +83,38 @@ public class Home extends AppCompatActivity {
                 startActivity(a);
             }
         });
+
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
+        builder.setMessage("Yakin Logout ?")
+                .setCancelable(false)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Intent a = new Intent(Home.this, LoginTemplate.class);
+                        startActivity(a);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog =builder.create();
+        alertDialog.show();
     }
 
 }
