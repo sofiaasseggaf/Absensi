@@ -2,58 +2,137 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:paddingTop="50dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="ABSENSI DIKA"
+        android:fontFamily="@font/bodonibold"
+        android:textStyle="bold"
+        android:textSize="16pt">
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/btnMasuk"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1">
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="30dp">
         </ImageButton>
         <ImageButton
             android:id="@+id/btnKeluar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1">
+            android:layout_width="120dp"
+            android:layout_height="120dp">
         </ImageButton>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="MASUK"
+            android:textAlignment="center"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:layout_marginRight="30dp">
+        </TextView>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="KELUAR"
+            android:textAlignment="center"
+            android:textSize="8pt"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/btnIzin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1">
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="30dp">
         </ImageButton>
         <ImageButton
             android:id="@+id/btnSakit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1">
+            android:layout_width="120dp"
+            android:layout_height="120dp">
         </ImageButton>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="IZIN"
+            android:textAlignment="center"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:layout_marginRight="30dp">
+        </TextView>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="SAKIT"
+            android:textAlignment="center"
+            android:textSize="8pt"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+
     <ImageButton
         android:id="@+id/btnOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="25dp"
         android:layout_gravity="center">
     </ImageButton>
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:text="OFF"
+        android:textAlignment="center"
+        android:textSize="8pt"
+        android:textStyle="bold">
+    </TextView>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="log out"
+        android:textSize="10pt"
+        android:fontFamily="@font/bodoni"
+        android:background="#B388FF">
+    </Button>
+
 </LinearLayout>
